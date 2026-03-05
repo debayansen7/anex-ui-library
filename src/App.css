@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@theme {
+  --color-chestnut: #7b3f00;
+  --color-chestnut-light: #a65f00;
+  --color-chestnut-dark: #4d2900;
+  --color-chestnut-muted: #7b3f00aa;
+  --color-chestnut-muted-light: #a65f00aa;
+  --color-chestnut-muted-dark: #4d2900aa;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
