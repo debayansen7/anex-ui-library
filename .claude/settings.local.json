@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Start-Sleep -Seconds 15)",
+      "Bash(Get-Content \"C:\\\\Users\\\\debay\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-debay-Debayan-Data-WORK-1--FRONTEND-1--REACTJS---REACT-Native-2--Projects-4--UI-Library-ui-library\\\\521645d7-ad54-4710-9c02-32e3bfc812d2\\\\tasks\\\\b1qfmfj7s.output\")",
+      "Bash(Select-Object -Last 30)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/react/package.json'\\).version\\)\")",
+      "Bash(npx tsc *)"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Theme registry — import all themes here.
+
+   To add a new theme:
+     1. Create src/themes/your-theme.css
+     2. Define [data-theme="your-theme"] { ...color tokens... }
+     3. Add @import './your-theme.css' below.
+     4. Set data-theme="your-theme" on <html> or any container.
+───────────────────────────────────────────────────────────────────────────── */
+
+@import './light.css';
+@import './dark.css';

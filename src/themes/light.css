@@ -1,0 +1,83 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Light theme — default.
+   Applied when: no data-theme set (:root) OR data-theme="light".
+
+   To create a new theme:
+     1. Create src/themes/your-theme.css
+     2. Define [data-theme="your-theme"] { ...override tokens below... }
+     3. Add @import './your-theme.css' to src/themes/index.css
+     4. Set data-theme="your-theme" on <html> or any container element.
+───────────────────────────────────────────────────────────────────────────── */
+
+:root,
+[data-theme="light"] {
+  /* ── Primary (brand actions) ──────────────────────────────────────────── */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-active: #1e40af;
+  --color-primary-subtle: #eff6ff;
+  --color-primary-subtle-hover: #dbeafe;
+  --color-primary-foreground: #ffffff;
+
+  /* ── Secondary (default/neutral actions) ──────────────────────────────── */
+  --color-secondary: #f3f4f6;
+  --color-secondary-hover: #e5e7eb;
+  --color-secondary-active: #d1d5db;
+  --color-secondary-foreground: #1f2937;
+  --color-secondary-border: #e5e7eb;
+
+  /* ── Ghost (low emphasis) ─────────────────────────────────────────────── */
+  --color-ghost-hover: #f3f4f6;
+  --color-ghost-active: #e5e7eb;
+  --color-ghost-foreground: #374151;
+
+  /* ── Danger (destructive actions) ────────────────────────────────────── */
+  --color-danger: #dc2626;
+  --color-danger-hover: #b91c1c;
+  --color-danger-active: #991b1b;
+  --color-danger-foreground: #ffffff;
+
+  /* ── Status ───────────────────────────────────────────────────────────── */
+  --color-success: #16a34a;
+  --color-success-subtle: #dcfce7;
+  --color-success-foreground: #14532d;
+
+  --color-warning: #ca8a04;
+  --color-warning-subtle: #fef9c3;
+  --color-warning-foreground: #713f12;
+
+  --color-error: #dc2626;
+  --color-error-subtle: #fee2e2;
+  --color-error-foreground: #7f1d1d;
+
+  --color-info: #2563eb;
+  --color-info-subtle: #dbeafe;
+  --color-info-foreground: #1e3a8a;
+
+  /* ── Text ─────────────────────────────────────────────────────────────── */
+  --color-text: #111827;
+  --color-text-subtle: #6b7280;
+  --color-text-disabled: #9ca3af;
+  --color-text-inverse: #ffffff;
+
+  /* ── Surface ──────────────────────────────────────────────────────────── */
+  --color-background: #ffffff;
+  --color-surface: #f9fafb;
+  --color-surface-raised: #ffffff;
+  --color-overlay: rgb(0 0 0 / 0.4);
+
+  /* ── Border ───────────────────────────────────────────────────────────── */
+  --color-border: #e5e7eb;
+  --color-border-strong: #d1d5db;
+  --color-border-focus: #3b82f6;
+
+  /* ── Form ─────────────────────────────────────────────────────────────── */
+  --color-label: #374151;
+  --color-label-required: #dc2626;
+  --color-input-background: #ffffff;
+  --color-input-border: #d1d5db;
+  --color-input-border-hover: #9ca3af;
+  --color-input-border-focus: #2563eb;
+  --color-input-border-error: #dc2626;
+  --color-input-placeholder: #9ca3af;
+}

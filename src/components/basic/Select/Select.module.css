@@ -1,0 +1,62 @@
+.wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.select {
+  display: block;
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  background-color: var(--color-input-background);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius-md);
+  /* Extra right padding reserves space for the chevron icon */
+  padding: var(--space-2) var(--space-8) var(--space-2) var(--space-3);
+  line-height: var(--leading-normal);
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.select:hover:not(:disabled) {
+  border-color: var(--color-input-border-hover);
+}
+
+.select:focus-visible {
+  border-color: var(--color-input-border-focus);
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.15);
+}
+
+.select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--color-surface);
+}
+
+.select[aria-invalid="true"] {
+  border-color: var(--color-input-border-error);
+}
+
+.select[aria-invalid="true"]:focus-visible {
+  border-color: var(--color-input-border-error);
+  box-shadow: 0 0 0 3px rgb(220 38 38 / 0.15);
+}
+
+/* Non-interactive chevron overlay */
+.chevron {
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-subtle);
+  display: flex;
+  align-items: center;
+}

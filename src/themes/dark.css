@@ -1,0 +1,76 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Dark theme.
+   Applied when: data-theme="dark" on <html> or any container element.
+───────────────────────────────────────────────────────────────────────────── */
+
+[data-theme="dark"] {
+  /* ── Primary ──────────────────────────────────────────────────────────── */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-primary-active: #1d4ed8;
+  --color-primary-subtle: #1e3a8a;
+  --color-primary-subtle-hover: #1e40af;
+  --color-primary-foreground: #ffffff;
+
+  /* ── Secondary ────────────────────────────────────────────────────────── */
+  --color-secondary: #1f2937;
+  --color-secondary-hover: #374151;
+  --color-secondary-active: #4b5563;
+  --color-secondary-foreground: #f9fafb;
+  --color-secondary-border: #374151;
+
+  /* ── Ghost ────────────────────────────────────────────────────────────── */
+  --color-ghost-hover: #1f2937;
+  --color-ghost-active: #374151;
+  --color-ghost-foreground: #d1d5db;
+
+  /* ── Danger ───────────────────────────────────────────────────────────── */
+  --color-danger: #ef4444;
+  --color-danger-hover: #dc2626;
+  --color-danger-active: #b91c1c;
+  --color-danger-foreground: #ffffff;
+
+  /* ── Status ───────────────────────────────────────────────────────────── */
+  --color-success: #22c55e;
+  --color-success-subtle: #14532d;
+  --color-success-foreground: #dcfce7;
+
+  --color-warning: #eab308;
+  --color-warning-subtle: #713f12;
+  --color-warning-foreground: #fef9c3;
+
+  --color-error: #ef4444;
+  --color-error-subtle: #7f1d1d;
+  --color-error-foreground: #fee2e2;
+
+  --color-info: #60a5fa;
+  --color-info-subtle: #1e3a8a;
+  --color-info-foreground: #dbeafe;
+
+  /* ── Text ─────────────────────────────────────────────────────────────── */
+  --color-text: #f9fafb;
+  --color-text-subtle: #9ca3af;
+  --color-text-disabled: #6b7280;
+  --color-text-inverse: #111827;
+
+  /* ── Surface ──────────────────────────────────────────────────────────── */
+  --color-background: #111827;
+  --color-surface: #1f2937;
+  --color-surface-raised: #374151;
+  --color-overlay: rgb(0 0 0 / 0.6);
+
+  /* ── Border ───────────────────────────────────────────────────────────── */
+  --color-border: #374151;
+  --color-border-strong: #4b5563;
+  --color-border-focus: #60a5fa;
+
+  /* ── Form ─────────────────────────────────────────────────────────────── */
+  --color-label: #d1d5db;
+  --color-label-required: #f87171;
+  --color-input-background: #1f2937;
+  --color-input-border: #4b5563;
+  --color-input-border-hover: #6b7280;
+  --color-input-border-focus: #3b82f6;
+  --color-input-border-error: #ef4444;
+  --color-input-placeholder: #6b7280;
+}

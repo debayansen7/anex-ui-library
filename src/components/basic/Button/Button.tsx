@@ -1,16 +1,32 @@
 import React from "react";
+import { cn } from "../../../lib/cn";
 import type { ButtonProps } from "./Button.Type";
+import styles from "./Button.module.css";
 
-const Button = ({ className, text, onClickFunction, size }: ButtonProps) => {
+export default function Button({
+  ref,
+  variant = "primary",
+  size = "md",
+  loading = false,
+  disabled,
+  type = "button",
+  className,
+  children,
+  ...rest
+}: ButtonProps) {
+  const isDisabled = disabled || loading;
   return (
     <button
-      className={className}
-      onClick={onClickFunction}
-      data-size={size || "md"}
+      ref={ref}
+      type={type}
+      disabled={isDisabled}
+      aria-disabled={isDisabled}
+      aria-busy={loading}
+      className={cn(styles.button, styles[variant], styles[size], className)}
+      {...rest}
     >
-      {text}
+      {loading && <span className={styles.spinner} aria-hidden="true" />}
+      {children}
     </button>
   );
-};
-
-export default Button;
+}

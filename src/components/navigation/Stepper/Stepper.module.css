@@ -1,0 +1,129 @@
+/* ── Shared ───────────────────────────────────────────────────────────────── */
+
+.stepper {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ── Indicator circle ─────────────────────────────────────────────────────── */
+
+.indicator {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface-raised);
+  color: var(--color-text-subtle);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.completed .indicator {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+.current .indicator {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* ── Connector line ───────────────────────────────────────────────────────── */
+
+.connector {
+  background: var(--color-border);
+  transition: background var(--transition-base);
+}
+
+.connectorFilled {
+  background: var(--color-primary);
+}
+
+/* ── Content ──────────────────────────────────────────────────────────────── */
+
+.label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.upcoming .label {
+  color: var(--color-text-subtle);
+}
+
+.description {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+  margin-top: var(--space-1);
+}
+
+/* ── Horizontal layout ────────────────────────────────────────────────────── */
+
+.horizontal {
+  display: flex;
+  align-items: flex-start;
+}
+
+.horizontal .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.horizontal .track {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.horizontal .connector {
+  flex: 1;
+  height: 2px;
+  margin: 0 var(--space-2);
+}
+
+.horizontal .content {
+  margin-top: var(--space-2);
+  text-align: center;
+}
+
+/* ── Vertical layout ──────────────────────────────────────────────────────── */
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.vertical .step {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-3);
+}
+
+.vertical .track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.vertical .connector {
+  width: 2px;
+  flex: 1;
+  min-height: var(--space-6);
+  margin: var(--space-1) 0;
+}
+
+.vertical .content {
+  padding-bottom: var(--space-5);
+}

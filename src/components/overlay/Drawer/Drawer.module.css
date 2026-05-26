@@ -1,0 +1,115 @@
+@keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideInRight  { from { transform: translateX(100%); } to { transform: translateX(0); } }
+@keyframes slideInLeft   { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+@keyframes slideInBottom { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+/* ── Backdrop ─────────────────────────────────────────────────────────────── */
+
+.dialog::backdrop {
+  background: var(--color-overlay);
+  animation: fadeIn var(--transition-base) ease-out;
+}
+
+/* ── Dialog element ───────────────────────────────────────────────────────── */
+
+.dialog {
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: visible;
+}
+
+/* ── Panel base ───────────────────────────────────────────────────────────── */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  height: 100%;
+}
+
+/* ── Side positioning ─────────────────────────────────────────────────────── */
+
+.right  { margin: 0 0 0 auto; }
+.left   { margin: 0 auto 0 0; }
+.bottom { margin: auto 0 0 0; }
+
+.panel_right  { border-radius: var(--radius-xl) 0 0 var(--radius-xl); animation: slideInRight  var(--transition-base) ease-out; }
+.panel_left   { border-radius: 0 var(--radius-xl) var(--radius-xl) 0; animation: slideInLeft   var(--transition-base) ease-out; }
+.panel_bottom { border-radius: var(--radius-xl) var(--radius-xl) 0 0; animation: slideInBottom var(--transition-base) ease-out; height: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .panel_right, .panel_left, .panel_bottom { animation: none; }
+  .dialog::backdrop { animation: none; }
+}
+
+/* ── Panel sizes (right/left) ─────────────────────────────────────────────── */
+
+.size_sm { width: min(320px, 100vw); }
+.size_md { width: min(480px, 100vw); }
+.size_lg { width: min(640px, 100vw); }
+
+/* Bottom drawer sizes become height */
+.panel_bottom.size_sm { max-height: 40vh; }
+.panel_bottom.size_md { max-height: 60vh; }
+.panel_bottom.size_lg { max-height: 80vh; }
+
+/* ── Header / body ────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.description {
+  padding: var(--space-3) var(--space-5) 0;
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-subtle);
+  flex-shrink: 0;
+}
+
+.body {
+  padding: var(--space-5);
+  overflow-y: auto;
+  flex: 1;
+  color: var(--color-text);
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-1);
+  border-radius: var(--radius-md);
+  color: var(--color-text-subtle);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.closeBtn:hover {
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.closeBtn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}

@@ -1,0 +1,57 @@
+.divider {
+  display: flex;
+  align-items: center;
+}
+
+.horizontal {
+  flex-direction: row;
+  width: 100%;
+}
+
+.vertical {
+  flex-direction: column;
+  height: 100%;
+  align-self: stretch;
+}
+
+/* plain line — no label */
+.horizontal:not(.withLabel)::after {
+  content: "";
+  display: block;
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.vertical:not(.withLabel)::after {
+  content: "";
+  display: block;
+  flex: 1;
+  width: 1px;
+  background-color: var(--color-border);
+}
+
+/* labeled variant */
+.withLabel {
+  gap: var(--space-3);
+}
+
+.line {
+  flex: 1;
+  background-color: var(--color-border);
+}
+
+.horizontal .line {
+  height: 1px;
+}
+
+.vertical .line {
+  width: 1px;
+}
+
+.labelText {
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+  white-space: nowrap;
+  user-select: none;
+}

@@ -1,0 +1,17 @@
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-0-5);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-label);
+  line-height: var(--leading-normal);
+  cursor: default;
+}
+
+/* aria-hidden so screen readers use the input's required attribute instead */
+.required {
+  color: var(--color-label-required);
+  font-weight: var(--font-bold);
+}

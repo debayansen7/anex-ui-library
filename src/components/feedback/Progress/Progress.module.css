@@ -1,0 +1,54 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.value {
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+}
+
+.track {
+  width: 100%;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--transition-base);
+}
+
+/* ── Variants ─────────────────────────────────────────────────────────────── */
+
+.default .fill {
+  background: var(--color-primary);
+}
+
+.success .fill {
+  background: var(--color-success);
+}
+
+.warning .fill {
+  background: var(--color-warning);
+}
+
+.error .fill {
+  background: var(--color-error);
+}

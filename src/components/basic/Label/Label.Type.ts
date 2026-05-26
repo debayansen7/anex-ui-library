@@ -1,6 +1,6 @@
-type LabelType = {
-  text: string;
-  className?: string;
-};
+import type { ComponentPropsWithRef } from "react";
 
-export type LabelProps = Partial<LabelType>;
+export interface LabelProps extends ComponentPropsWithRef<"label"> {
+  /** Renders a visible * indicator; aria-hidden so screen readers use the input's required attr */
+  required?: boolean;
+}

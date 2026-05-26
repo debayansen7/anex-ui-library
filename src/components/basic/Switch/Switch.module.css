@@ -1,0 +1,90 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Wrapper label makes the whole toggle clickable */
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Visually hidden — stays in a11y tree with role="switch" */
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.track {
+  position: relative;
+  display: inline-block;
+  width: 2.25rem;
+  height: 1.25rem;
+  background-color: var(--color-border-strong);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-base);
+  flex-shrink: 0;
+}
+
+.thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 1rem;
+  height: 1rem;
+  background-color: #ffffff;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base);
+}
+
+/* Checked state — track goes primary, thumb slides right */
+.input:checked ~ .track {
+  background-color: var(--color-primary);
+}
+
+.input:checked ~ .track .thumb {
+  transform: translateX(1rem);
+}
+
+/* Focus ring on track */
+.input:focus-visible ~ .track {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Disabled */
+.input:disabled ~ .track {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wrapper:has(.input:disabled) {
+  cursor: not-allowed;
+}
+
+.wrapper:has(.input:disabled) .toggle {
+  cursor: not-allowed;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  cursor: pointer;
+  line-height: var(--leading-normal);
+}
+
+.wrapper:has(.input:disabled) .label {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

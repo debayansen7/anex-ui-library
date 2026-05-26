@@ -1,7 +1,17 @@
 import React from "react";
+import { cn } from "../../../lib/cn";
 import type { LabelProps } from "./Label.Type";
-const Label = ({ text, className }: LabelProps) => {
-  return <label className={className}>{text}</label>;
-};
+import styles from "./Label.module.css";
 
-export default Label;
+export default function Label({ ref, required, className, children, ...rest }: LabelProps) {
+  return (
+    <label ref={ref} className={cn(styles.label, className)} {...rest}>
+      {children}
+      {required && (
+        <span className={styles.required} aria-hidden="true">
+          *
+        </span>
+      )}
+    </label>
+  );
+}
