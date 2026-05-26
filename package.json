@@ -1,9 +1,9 @@
 {
-  "name": "@debayan/cleanui",
-  "version": "0.0.1",
-  "description": "A clean, accessible React UI component library",
+  "name": "@debayan/soraui",
+  "version": "0.1.0",
+  "description": "Sora UI — a clean, accessible React component library built with Tailwind CSS v4",
   "type": "module",
-  "keywords": ["react", "ui", "components", "accessibility", "tailwindcss"],
+  "keywords": ["react", "ui", "components", "accessibility", "tailwindcss", "soraui", "design-system", "typescript"],
   "author": "Debayan Sen <debayan.sen7@gmail.com>",
   "license": "MIT",
   "main": "./dist/index.cjs",
