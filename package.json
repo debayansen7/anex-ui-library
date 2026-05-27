@@ -1,11 +1,23 @@
 {
-  "name": "@debayan/anexui",
+  "name": "anexui",
   "version": "0.1.0",
   "description": "Anex UI — a clean, accessible React component library built with Tailwind CSS v4",
   "type": "module",
-  "keywords": ["react", "ui", "components", "accessibility", "tailwindcss", "anexui", "design-system", "typescript"],
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "accessibility",
+    "tailwindcss",
+    "anexui",
+    "design-system",
+    "typescript"
+  ],
   "author": "Debayan Sen <debayan.sen7@gmail.com>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/types/index.d.ts",
@@ -17,8 +29,12 @@
     },
     "./styles": "./dist/index.css"
   },
-  "files": ["dist"],
-  "sideEffects": ["**/*.css"],
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

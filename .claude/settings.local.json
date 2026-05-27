@@ -12,7 +12,10 @@
       "mcp__claude_ai_Notion__notion-fetch",
       "mcp__claude_ai_Notion__notion-update-page",
       "Bash(Get-ChildItem -Path src -Recurse -Include \"*.js\",\"*.cjs\",\"*.mjs\")",
-      "Bash(Select-Object FullName)"
+      "Bash(Select-Object FullName)",
+      "Bash(npm whoami *)",
+      "Bash(npm publish *)",
+      "Bash(npm config *)"
     ]
   }
 }

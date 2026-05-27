@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s https://registry.npmjs.org/@debayan)",
+      "Bash(curl -s https://registry.npmjs.org/-/org/debayan/user)",
+      "Bash(npm profile *)",
+      "Bash(npm token *)",
+      "Bash(curl -s https://registry.npmjs.org/anexui)",
+      "Bash(winget install *)",
+      "Bash(gh auth *)",
+      "Bash(gh repo *)",
+      "Read(//c/Program Files/GitHub CLI/**)",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" repo view debayansen7/anex-ui-library --json repositoryTopics --jq '.repositoryTopics[].name' 2>&1)",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" repo edit debayansen7/anex-ui-library --enable-discussions --description \"Anex UI - 50+ accessible React components built with Tailwind CSS v4, CSS Modules, and full dark mode support. Zero Radix. WCAG AA.\" 2>&1)",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" repo view debayansen7/anex-ui-library --json description,hasDiscussionsEnabled 2>&1)",
+      "Bash(ls \"c:\\\\Users\\\\debay\\\\Debayan-Data\\\\WORK\\\\1. FRONTEND\\\\1. REACTJS + REACT Native\\\\2. Projects\\\\4. UI Library\\\\\")",
+      "Read(//c/Users/debay/Debayan-Data/WORK/1. FRONTEND/1. REACTJS + REACT Native/2. Projects/**)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\debay\\Debayan-Data\\WORK\\1. FRONTEND\\1. REACTJS + REACT Native\\2. Projects\\4. UI Library\\anexui-website"
+    ]
+  }
+}
