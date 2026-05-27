@@ -1,4 +1,3 @@
-import React from "react";
 import { cn } from "../../../lib/cn";
 import type { ButtonProps } from "./Button.Type";
 import styles from "./Button.module.css";

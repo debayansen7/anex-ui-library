@@ -1,4 +1,3 @@
-import React from "react";
 import { cn } from "../../../lib/cn";
 import type { CardProps, CardSectionProps } from "./Card.Type";
 import styles from "./Card.module.css";

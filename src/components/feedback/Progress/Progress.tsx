@@ -1,4 +1,3 @@
-import React from "react";
 import { cn } from "../../../lib/cn";
 import type { ProgressProps } from "./Progress.Type";
 import styles from "./Progress.module.css";

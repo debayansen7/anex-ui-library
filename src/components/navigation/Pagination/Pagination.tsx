@@ -1,4 +1,3 @@
-import React from "react";
 import { cn } from "../../../lib/cn";
 import type { PaginationProps } from "./Pagination.Type";
 import styles from "./Pagination.module.css";

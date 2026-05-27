@@ -1,4 +1,3 @@
-import React from "react";
 import { cn } from "../../../lib/cn";
 import type { GridProps } from "./Grid.Type";
 import styles from "./Grid.module.css";

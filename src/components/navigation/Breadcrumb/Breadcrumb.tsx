@@ -1,4 +1,3 @@
-import React from "react";
 import { cn } from "../../../lib/cn";
 import type { BreadcrumbProps } from "./Breadcrumb.Type";
 import styles from "./Breadcrumb.module.css";

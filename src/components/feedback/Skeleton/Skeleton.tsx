@@ -1,4 +1,3 @@
-import React from "react";
 import { cn } from "../../../lib/cn";
 import type { SkeletonProps } from "./Skeleton.Type";
 import styles from "./Skeleton.module.css";

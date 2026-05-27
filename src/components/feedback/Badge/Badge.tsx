@@ -1,4 +1,3 @@
-import React from "react";
 import { cn } from "../../../lib/cn";
 import type { BadgeProps } from "./Badge.Type";
 import styles from "./Badge.module.css";

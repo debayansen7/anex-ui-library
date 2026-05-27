@@ -1,4 +1,3 @@
-import React from "react";
 import { cn } from "../../../lib/cn";
 import type { TextareaProps } from "./Textarea.Type";
 import styles from "./Textarea.module.css";

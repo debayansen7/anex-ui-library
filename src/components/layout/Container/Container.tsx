@@ -1,4 +1,3 @@
-import React from "react";
 import { cn } from "../../../lib/cn";
 import type { ContainerProps, ContainerMaxWidth } from "./Container.Type";
 import styles from "./Container.module.css";

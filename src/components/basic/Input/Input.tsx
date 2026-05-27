@@ -1,4 +1,3 @@
-import React from "react";
 import { cn } from "../../../lib/cn";
 import type { InputProps } from "./Input.Type";
 import styles from "./Input.module.css";

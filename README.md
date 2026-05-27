@@ -1,8 +1,8 @@
-# Sora UI
+# Anex UI
 
 A clean, accessible, and themeable React component library built with **React 19**, **TypeScript**, **Tailwind CSS v4**, and **CSS Modules**.
 
-> **Package name:** `@debayan/soraui`
+> **Package name:** `@debayan/anexui`
 
 ---
 
@@ -35,16 +35,16 @@ A clean, accessible, and themeable React component library built with **React 19
 
 ```bash
 # npm
-npm install @debayan/soraui
+npm install @debayan/anexui
 
 # pnpm
-pnpm add @debayan/soraui
+pnpm add @debayan/anexui
 
 # yarn
-yarn add @debayan/soraui
+yarn add @debayan/anexui
 ```
 
-Sora UI requires **React 19** as a peer dependency:
+Anex UI requires **React 19** as a peer dependency:
 
 ```bash
 npm install react@^19 react-dom@^19
@@ -56,17 +56,17 @@ npm install react@^19 react-dom@^19
 
 ### 1. Import the stylesheet
 
-Add the Sora UI stylesheet once at the root of your app (e.g. `main.tsx` or `_app.tsx`):
+Add the Anex UI stylesheet once at the root of your app (e.g. `main.tsx` or `_app.tsx`):
 
 ```tsx
-import "@debayan/soraui/styles";
+import "@debayan/anexui/styles";
 ```
 
 This imports all design tokens (spacing, typography, radius, shadows) and both the light and dark color themes.
 
 ### 2. Set a theme
 
-Sora UI reads the `data-theme` attribute on the `<html>` element:
+Anex UI reads the `data-theme` attribute on the `<html>` element:
 
 ```html
 <!-- Light (default) -->
@@ -87,7 +87,7 @@ document.documentElement.setAttribute("data-theme", "dark");
 If you use the `Toast` system, wrap your app with `ToastProvider`:
 
 ```tsx
-import { ToastProvider } from "@debayan/soraui";
+import { ToastProvider } from "@debayan/anexui";
 
 function App() {
   return (
@@ -102,7 +102,7 @@ function App() {
 
 ## Theming
 
-Sora UI uses CSS custom properties for all design decisions. Themes are defined in two files:
+Anex UI uses CSS custom properties for all design decisions. Themes are defined in two files:
 
 - `src/themes/light.css` — applied under `[data-theme="light"]`
 - `src/themes/dark.css` — applied under `[data-theme="dark"]`
@@ -219,7 +219,7 @@ Sora UI uses CSS custom properties for all design decisions. Themes are defined 
 ### Button
 
 ```tsx
-import { Button } from "@debayan/soraui";
+import { Button } from "@debayan/anexui";
 
 <Button variant="solid" size="md" onClick={() => console.log("clicked")}>
   Get started
@@ -233,7 +233,7 @@ import { Button } from "@debayan/soraui";
 ### FormField
 
 ```tsx
-import { FormField, Input } from "@debayan/soraui";
+import { FormField, Input } from "@debayan/anexui";
 
 <FormField
   label="Email address"
@@ -249,7 +249,7 @@ import { FormField, Input } from "@debayan/soraui";
 ### Toast
 
 ```tsx
-import { useToast } from "@debayan/soraui";
+import { useToast } from "@debayan/anexui";
 
 function SaveButton() {
   const { toast } = useToast();
@@ -265,7 +265,7 @@ function SaveButton() {
 ### Tabs
 
 ```tsx
-import { Tabs, TabList, Tab, TabPanel } from "@debayan/soraui";
+import { Tabs, TabList, Tab, TabPanel } from "@debayan/anexui";
 
 <Tabs defaultActiveId="overview" variant="line">
   <TabList>
@@ -282,7 +282,7 @@ import { Tabs, TabList, Tab, TabPanel } from "@debayan/soraui";
 ### Modal
 
 ```tsx
-import { Modal, Button } from "@debayan/soraui";
+import { Modal, Button } from "@debayan/anexui";
 import { useState } from "react";
 
 function Example() {
@@ -302,11 +302,11 @@ function Example() {
 ### Accordion
 
 ```tsx
-import { Accordion, AccordionItem, AccordionTrigger, AccordionPanel } from "@debayan/soraui";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionPanel } from "@debayan/anexui";
 
 <Accordion multiple>
   <AccordionItem id="q1">
-    <AccordionTrigger>What is Sora UI?</AccordionTrigger>
+    <AccordionTrigger>What is Anex UI?</AccordionTrigger>
     <AccordionPanel>A clean, accessible React component library.</AccordionPanel>
   </AccordionItem>
   <AccordionItem id="q2">

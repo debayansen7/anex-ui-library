@@ -1,4 +1,3 @@
-import React from "react";
 import { cn } from "../../../lib/cn";
 import type { TimelineProps, TimelineItemStatus } from "./Timeline.Type";
 import styles from "./Timeline.module.css";

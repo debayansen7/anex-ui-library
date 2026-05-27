@@ -1,4 +1,3 @@
-import React from "react";
 import { cn } from "../../../lib/cn";
 import type { TagProps } from "./Tag.Type";
 import styles from "./Tag.module.css";
