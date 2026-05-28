@@ -29,8 +29,12 @@
     },
     "./styles": "./dist/index.css"
   },
+  "bin": {
+    "anexui": "./cli/index.js"
+  },
   "files": [
-    "dist"
+    "dist",
+    "cli"
   ],
   "sideEffects": [
     "**/*.css"
