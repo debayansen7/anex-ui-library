@@ -9,3 +9,6 @@ export type { GridProps, GridCols, GridGap } from "./Grid/Grid.Type";
 
 export { default as Divider } from "./Divider/Divider";
 export type { DividerProps } from "./Divider/Divider.Type";
+
+export { Sidebar } from "./Sidebar/Sidebar";
+export type { SidebarProps, SidebarSide } from "./Sidebar/Sidebar.Type";

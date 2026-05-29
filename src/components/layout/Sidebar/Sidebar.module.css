@@ -1,0 +1,80 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--color-surface);
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: width var(--transition-slow);
+}
+
+.left  { border-right: 1px solid var(--color-border); }
+.right { border-left:  1px solid var(--color-border); }
+
+/* ── Slots ──────────────────────────────────────────────────────────────────── */
+
+.header {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+  white-space: nowrap;
+  transition: opacity var(--transition-base);
+}
+
+.body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-4) 0;
+  white-space: nowrap;
+  transition: opacity var(--transition-base);
+}
+
+.footer {
+  padding: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  flex-shrink: 0;
+  white-space: nowrap;
+  transition: opacity var(--transition-base);
+}
+
+/* Hide slot content (fade out) when collapsed */
+.contentHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Toggle button ───────────────────────────────────────────────────────────── */
+
+.toggleBtn {
+  position: absolute;
+  bottom: var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-raised);
+  color: var(--color-text-subtle);
+  cursor: pointer;
+  transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.toggleBtn:hover {
+  color: var(--color-text);
+  background: var(--color-ghost-hover);
+  border-color: var(--color-border-strong);
+}
+
+.toggleBtn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Position toggle on the outer edge */
+.toggle_left  { right: var(--space-3); }
+.toggle_right { left:  var(--space-3); }

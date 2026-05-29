@@ -27,3 +27,6 @@ export type { CodeBlockProps } from "./CodeBlock/CodeBlock.Type";
 
 export { default as Rating } from "./Rating/Rating";
 export type { RatingProps, RatingSize } from "./Rating/Rating.Type";
+
+export { default as ImageGallery } from "./ImageGallery/ImageGallery";
+export type { ImageGalleryProps, GalleryImage, GalleryCols, GalleryGap } from "./ImageGallery/ImageGallery.Type";

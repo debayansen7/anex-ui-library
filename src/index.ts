@@ -35,7 +35,7 @@ export type {
 } from "./components/basic";
 
 // ── Layout ─────────────────────────────────────────────────────────────────
-export { Container, Stack, Grid, Divider } from "./components/layout";
+export { Container, Stack, Grid, Divider, Sidebar } from "./components/layout";
 
 export type {
   ContainerProps,
@@ -46,6 +46,8 @@ export type {
   GridCols,
   GridGap,
   DividerProps,
+  SidebarProps,
+  SidebarSide,
 } from "./components/layout";
 
 // ── Navigation ─────────────────────────────────────────────────────────────
@@ -133,6 +135,7 @@ export {
   Timeline,
   CodeBlock,
   Rating,
+  ImageGallery,
 } from "./components/data-display";
 
 export type {
@@ -147,6 +150,10 @@ export type {
   CodeBlockProps,
   RatingProps,
   RatingSize,
+  ImageGalleryProps,
+  GalleryImage,
+  GalleryCols,
+  GalleryGap,
 } from "./components/data-display";
 
 // ── Form Composites ────────────────────────────────────────────────────────
