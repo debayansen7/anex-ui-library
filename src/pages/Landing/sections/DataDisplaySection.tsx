@@ -35,7 +35,7 @@ const TIMELINE_ITEMS = [
 ];
 
 const CAROUSEL_SLIDES = [
-  { bg: "var(--color-primary-subtle)", label: "Build fast with 53 components" },
+  { bg: "var(--color-primary-subtle)", label: "Build fast with 51 components" },
   { bg: "var(--color-success-subtle)", label: "WCAG AA accessible by default" },
   { bg: "var(--color-info-subtle)", label: "Light & dark themes out of the box" },
   { bg: "var(--color-warning-subtle)", label: "React 19 • TypeScript • Tailwind v4" },

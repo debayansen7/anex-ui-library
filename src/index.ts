@@ -13,6 +13,7 @@ export {
   Select,
   Switch,
   Slider,
+  SegmentedControl,
 } from "./components/basic";
 
 export type {
@@ -28,6 +29,9 @@ export type {
   SelectProps,
   SwitchProps,
   SliderProps,
+  SegmentedControlProps,
+  SegmentedOption,
+  SegmentedSize,
 } from "./components/basic";
 
 // ── Layout ─────────────────────────────────────────────────────────────────
@@ -45,7 +49,12 @@ export type {
 } from "./components/layout";
 
 // ── Navigation ─────────────────────────────────────────────────────────────
-export { Tabs, TabList, Tab, TabPanel, Breadcrumb, Pagination, Stepper } from "./components/navigation";
+export {
+  Tabs, TabList, Tab, TabPanel, Breadcrumb, Pagination, Stepper,
+  Navbar, NavbarBrand, NavbarNav, NavbarActions,
+  SideNav, SideNavGroup, SideNavItem,
+  TableOfContents,
+} from "./components/navigation";
 
 export type {
   TabsProps,
@@ -59,10 +68,19 @@ export type {
   StepperProps,
   Step,
   StepperOrientation,
+  NavbarProps,
+  NavbarBrandProps,
+  NavbarNavProps,
+  NavbarActionsProps,
+  SideNavProps,
+  SideNavGroupProps,
+  SideNavItemProps,
+  TableOfContentsProps,
+  TocItem,
 } from "./components/navigation";
 
 // ── Feedback ───────────────────────────────────────────────────────────────
-export { Alert, Badge, Spinner, Progress, Skeleton, ToastProvider, useToast } from "./components/feedback";
+export { Alert, Badge, Spinner, Progress, Skeleton, ToastProvider, useToast, Callout, EmptyState } from "./components/feedback";
 
 export type {
   AlertProps,
@@ -80,10 +98,13 @@ export type {
   ToastType,
   ToastProviderProps,
   ToastContextValue,
+  CalloutProps,
+  CalloutVariant,
+  EmptyStateProps,
 } from "./components/feedback";
 
 // ── Overlay ────────────────────────────────────────────────────────────────
-export { Modal, Drawer, Tooltip, Popover } from "./components/overlay";
+export { Modal, Drawer, Tooltip, Popover, CommandPalette } from "./components/overlay";
 
 export type {
   ModalProps,
@@ -96,6 +117,8 @@ export type {
   PopoverProps,
   PopoverSide,
   PopoverAlign,
+  CommandPaletteProps,
+  CommandItem,
 } from "./components/overlay";
 
 // ── Data Display ───────────────────────────────────────────────────────────
@@ -108,6 +131,8 @@ export {
   Carousel,
   Banner,
   Timeline,
+  CodeBlock,
+  Rating,
 } from "./components/data-display";
 
 export type {
@@ -119,13 +144,21 @@ export type {
   CarouselProps,
   BannerProps, BannerVariant, BannerAction,
   TimelineProps, TimelineItem, TimelineItemStatus,
+  CodeBlockProps,
+  RatingProps,
+  RatingSize,
 } from "./components/data-display";
 
 // ── Form Composites ────────────────────────────────────────────────────────
-export { FormField, SearchInput, NumberInput } from "./components/form";
+export { FormField, SearchInput, NumberInput, DatePicker, Combobox, FileUpload, OTPInput } from "./components/form";
 
 export type {
   FormFieldProps,
   SearchInputProps,
   NumberInputProps,
+  DatePickerProps,
+  ComboboxProps,
+  ComboboxOption,
+  FileUploadProps,
+  OTPInputProps,
 } from "./components/form";

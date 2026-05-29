@@ -1,0 +1,28 @@
+.root { display: inline-flex; align-items: center; gap: var(--space-0-5); }
+.rootDisabled { opacity: 0.5; pointer-events: none; }
+
+.star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-border-strong);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  position: relative;
+}
+.star:hover { transform: scale(1.1); }
+.star:focus-visible { outline: 2px solid var(--color-border-focus); outline-offset: 2px; border-radius: var(--radius-sm); }
+.starReadOnly { cursor: default; }
+.starReadOnly:hover { transform: none; }
+
+/* amber-400 — intentional brand color for stars */
+.starFilled { color: #f59e0b; }
+.starHalf  { color: #f59e0b; }
+
+/* Sizes — applied to .root so star buttons inherit via currentColor */
+.sm .star { width: 1rem; height: 1rem; }
+.md .star { width: 1.25rem; height: 1.25rem; }
+.lg .star { width: 1.75rem; height: 1.75rem; }

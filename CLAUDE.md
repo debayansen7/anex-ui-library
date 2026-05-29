@@ -2,7 +2,7 @@
 
 ## Project overview
 
-**Anex UI** (`anexui`) is a React 19 component library built with TypeScript and Tailwind CSS v4. It ships 53 accessible components across 7 categories. The repo hosts both the library source and a landing page that showcases every component live.
+**Anex UI** (`anexui`) is a React 19 component library built with TypeScript and Tailwind CSS v4. It ships 51 accessible components across 7 categories. The repo hosts both the library source and a landing page that showcases every component live.
 
 ---
 

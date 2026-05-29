@@ -24,3 +24,6 @@ export type { SwitchProps } from "./Switch/Switch.Type";
 
 export { default as Slider } from "./Slider/Slider";
 export type { SliderProps } from "./Slider/Slider.Type";
+
+export { default as SegmentedControl } from "./SegmentedControl/SegmentedControl";
+export type { SegmentedControlProps, SegmentedOption, SegmentedSize } from "./SegmentedControl/SegmentedControl.Type";

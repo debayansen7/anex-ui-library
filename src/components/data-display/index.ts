@@ -21,3 +21,9 @@ export type { BannerProps, BannerVariant, BannerAction } from "./Banner/Banner.T
 
 export { default as Timeline } from "./Timeline/Timeline";
 export type { TimelineProps, TimelineItem, TimelineItemStatus } from "./Timeline/Timeline.Type";
+
+export { default as CodeBlock } from "./CodeBlock/CodeBlock";
+export type { CodeBlockProps } from "./CodeBlock/CodeBlock.Type";
+
+export { default as Rating } from "./Rating/Rating";
+export type { RatingProps, RatingSize } from "./Rating/Rating.Type";

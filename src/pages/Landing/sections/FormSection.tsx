@@ -87,7 +87,7 @@ const FormSection = () => {
 
         <DemoCard
           title="SearchInput"
-          description="type=\"search\" input with a clear × button that hides the native browser cancel icon."
+          description={'type="search" input with a clear × button that hides the native browser cancel icon.'}
           code={`import { SearchInput } from "anexui";
 import { useState } from "react";
 
