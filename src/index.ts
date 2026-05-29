@@ -1,3 +1,6 @@
+import "./tokens/index.css";
+import "./themes/index.css";
+
 // ── Basic ──────────────────────────────────────────────────────────────────
 export {
   Button,
@@ -109,7 +112,7 @@ export {
 
 export type {
   AvatarProps, AvatarSize, AvatarStatus,
-  CardProps, CardSectionProps,
+  CardProps, CardSectionProps, CardRounded, CardShadow,
   TableProps, TableHeaderProps, TableCellProps,
   AccordionProps, AccordionItemProps, AccordionTriggerProps, AccordionPanelProps,
   TagProps, TagVariant,

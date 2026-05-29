@@ -1,10 +1,54 @@
+/* ── Base ──────────────────────────────────────────────────────────────────── */
 .card {
-  border-radius: var(--radius-xl);
   border: 1px solid var(--color-border);
   background: var(--color-surface-raised);
   overflow: hidden;
+  /* border-radius applied via .roundedXxx classes */
 }
 
+/* ── Rounded variants ─────────────────────────────────────────────────────── */
+.roundedNone { border-radius: 0; }
+.roundedSm   { border-radius: var(--radius-sm); }
+.roundedMd   { border-radius: var(--radius-md); }
+.roundedLg   { border-radius: var(--radius-lg); }
+.roundedXl   { border-radius: var(--radius-xl); }
+.rounded2xl  { border-radius: var(--radius-2xl); }
+.roundedFull { border-radius: var(--radius-full); }
+
+/* ── Shadow variants ──────────────────────────────────────────────────────── */
+.shadowSm { box-shadow: var(--shadow-sm); }
+.shadowMd { box-shadow: var(--shadow-md); }
+.shadowLg { box-shadow: var(--shadow-lg); }
+.shadowXl { box-shadow: var(--shadow-xl); }
+
+/* ── Hoverable ────────────────────────────────────────────────────────────── */
+.hoverable {
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+  cursor: pointer;
+}
+
+.hoverable:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.hoverable:active {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hoverable {
+    transition: none;
+  }
+  .hoverable:hover {
+    transform: none;
+  }
+}
+
+/* ── Compound sections ────────────────────────────────────────────────────── */
 .header {
   padding: var(--space-4) var(--space-5);
   border-bottom: 1px solid var(--color-border);

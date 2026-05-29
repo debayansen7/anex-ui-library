@@ -2,7 +2,7 @@ export { default as Avatar } from "./Avatar/Avatar";
 export type { AvatarProps, AvatarSize, AvatarStatus } from "./Avatar/Avatar.Type";
 
 export { Card, CardHeader, CardBody, CardFooter } from "./Card/Card";
-export type { CardProps, CardSectionProps } from "./Card/Card.Type";
+export type { CardProps, CardSectionProps, CardRounded, CardShadow } from "./Card/Card.Type";
 
 export { Table, TableHead, TableBody, TableRow, TableHeader, TableCell } from "./Table/Table";
 export type { TableProps, TableHeaderProps, TableCellProps } from "./Table/Table.Type";
