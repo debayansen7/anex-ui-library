@@ -5,7 +5,7 @@ A clean, accessible, and themeable React component library built with **React 19
 [![npm version](https://img.shields.io/npm/v/anexui)](https://www.npmjs.com/package/anexui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-violet.svg)](LICENSE)
 
-> **Package name:** `anexui` — **Current version:** `0.1.0`
+> **Package name:** `anexui` — **Current version:** `1.0.0`
 >
 > GitHub: [debayansen7/anex-ui-library](https://github.com/debayansen7/anex-ui-library) · npm: [npmjs.com/package/anexui](https://www.npmjs.com/package/anexui)
 
@@ -13,13 +13,14 @@ A clean, accessible, and themeable React component library built with **React 19
 
 ## Features
 
-- **53 exported components** spanning layout, navigation, feedback, overlays, data display, and form controls
+- **53 components** across 7 categories — layout, navigation, feedback, overlays, data display, form controls, and more
 - **WCAG AA accessibility** — semantic HTML, ARIA attributes, keyboard navigation, and focus management throughout
-- **Light & dark theming** out of the box via CSS custom properties — switch at runtime with a single `data-theme` attribute; light is the default
-- **No UI library dependencies** — built from scratch with native browser APIs (`<dialog>`, `hidden`, `role`, `aria-*`); only three small utilities are bundled (`clsx`, `tailwind-merge`, `class-variance-authority`)
+- **Light & dark theming** out of the box via CSS custom properties — switch at runtime with a single `data-theme` attribute
+- **Zero UI library dependencies** — built from scratch using native browser APIs (`<dialog>`, `hidden`, `role`, `aria-*`); only three small utilities bundled (`clsx`, `tailwind-merge`, `class-variance-authority`)
 - **React 19 patterns** — `ref` as a prop, `useId()`, `useCallback()`, no deprecated `forwardRef`
+- **Polymorphic Button** — renders as `<a>` when `href` is provided, `<button>` otherwise
 - **CSS Modules + Tailwind CSS v4** — scoped styles with design tokens; no global class leakage
-- **Tree-shakeable** — ESM + CJS dual build, fully typed with declaration files
+- **Tree-shakeable** — ESM + CJS dual build, fully typed declaration files
 - **Storybook v10** — interactive docs, dark mode toggle, and accessibility audit built in
 
 ---
@@ -61,7 +62,7 @@ npm install react@^19 react-dom@^19
 
 ### 1. Import the stylesheet
 
-Add the Anex UI stylesheet once at the root of your app (e.g. `main.tsx` or `_app.tsx`):
+Add the Anex UI stylesheet once at the root of your app (e.g. `main.tsx` or `app/layout.tsx`):
 
 ```tsx
 import "anexui/styles";
@@ -71,7 +72,7 @@ This imports all design tokens (spacing, typography, radius, shadows, z-index) a
 
 ### 2. Set a theme
 
-Anex UI defaults to the **light** theme (`:root`). Override by setting the `data-theme` attribute on the `<html>` element:
+Anex UI defaults to the **light** theme (`:root`). Override by setting `data-theme` on `<html>`:
 
 ```html
 <!-- Light (default — no attribute required) -->
@@ -84,15 +85,13 @@ Anex UI defaults to the **light** theme (`:root`). Override by setting the `data
 <html data-theme="dark">
 ```
 
-To switch programmatically:
+Switch programmatically:
 
 ```ts
 document.documentElement.setAttribute("data-theme", "dark");
 ```
 
-### 3. (Optional) Wrap with ToastProvider
-
-If you use the `Toast` system, wrap your app with `ToastProvider`:
+### 3. Wrap with ToastProvider (if using Toast)
 
 ```tsx
 import { ToastProvider } from "anexui";
@@ -108,177 +107,95 @@ function App() {
 
 ---
 
-## Theming
-
-Anex UI uses CSS custom properties for all design decisions. Themes are defined in two files:
-
-- `src/themes/light.css` — applied under `:root` and `[data-theme="light"]` (default)
-- `src/themes/dark.css` — applied under `[data-theme="dark"]`
-
-To add a custom theme, create `src/themes/my-theme.css` with `[data-theme="my-theme"] { ... }`, register it in `src/themes/index.css`, and set `data-theme="my-theme"` on `<html>`.
-
-### Color tokens
-
-| Token | Purpose |
-|---|---|
-| `--color-background` | Page background |
-| `--color-surface` | Card / panel surface |
-| `--color-surface-raised` | Elevated surface (popovers, dropdowns) |
-| `--color-overlay` | Modal / drawer backdrop (semi-transparent) |
-| `--color-border` | Default border |
-| `--color-border-strong` | High-contrast border |
-| `--color-border-focus` | Focus ring color |
-| `--color-text` | Primary text |
-| `--color-text-subtle` | Muted / secondary text |
-| `--color-text-disabled` | Disabled state text |
-| `--color-text-inverse` | Text on inverted (dark) backgrounds |
-| `--color-primary` | Brand / action color |
-| `--color-primary-hover` | Hovered primary |
-| `--color-primary-active` | Pressed primary |
-| `--color-primary-subtle` | Tinted background for primary elements |
-| `--color-primary-foreground` | Text on primary backgrounds |
-| `--color-secondary` | Neutral action background |
-| `--color-secondary-foreground` | Text on secondary backgrounds |
-| `--color-ghost-foreground` | Text for ghost / low-emphasis elements |
-| `--color-danger` | Destructive action color |
-| `--color-danger-foreground` | Text on danger backgrounds |
-| `--color-success` / `--color-success-subtle` / `--color-success-foreground` | Success status |
-| `--color-warning` / `--color-warning-subtle` / `--color-warning-foreground` | Warning status |
-| `--color-error` / `--color-error-subtle` / `--color-error-foreground` | Error status |
-| `--color-info` / `--color-info-subtle` / `--color-info-foreground` | Info status |
-| `--color-label` | Form label text |
-| `--color-label-required` | Required field asterisk |
-| `--color-input-background` | Form control background |
-| `--color-input-border` | Form control border |
-| `--color-input-border-hover` | Hovered form control border |
-| `--color-input-border-focus` | Focused form control border |
-| `--color-input-border-error` | Error state form control border |
-| `--color-input-placeholder` | Placeholder text |
-
-### Spacing tokens
-
-Spacing follows a **rem-based 4px scale** (`1rem = 16px`). Fractional steps are available for fine-grained control:
-
-| Token | Value | px equivalent |
-|---|---|---|
-| `--space-0` | `0` | 0 |
-| `--space-px` | `1px` | 1 |
-| `--space-0-5` | `0.125rem` | 2 |
-| `--space-1` | `0.25rem` | 4 |
-| `--space-1-5` | `0.375rem` | 6 |
-| `--space-2` | `0.5rem` | 8 |
-| `--space-2-5` | `0.625rem` | 10 |
-| `--space-3` | `0.75rem` | 12 |
-| `--space-4` | `1rem` | 16 |
-| `--space-5` | `1.25rem` | 20 |
-| `--space-6` | `1.5rem` | 24 |
-| `--space-8` | `2rem` | 32 |
-| `--space-10` | `2.5rem` | 40 |
-| `--space-12` | `3rem` | 48 |
-| `--space-16` | `4rem` | 64 |
-| `--space-20` | `5rem` | 80 |
-| `--space-24` | `6rem` | 96 |
-
-### Typography tokens
-
-| Token | Value |
-|---|---|
-| `--text-xs` | `0.75rem` |
-| `--text-sm` | `0.875rem` |
-| `--text-base` | `1rem` |
-| `--text-lg` | `1.125rem` |
-| `--text-xl` | `1.25rem` |
-| `--text-2xl` | `1.5rem` |
-| `--text-3xl` | `1.875rem` |
-| `--text-4xl` | `2.25rem` |
-| `--font-sans` | System sans-serif stack |
-| `--font-mono` | System monospace stack |
-
-### Other tokens
-
-| Token | Purpose |
-|---|---|
-| `--radius-sm` / `--radius-md` / `--radius-lg` / `--radius-xl` / `--radius-2xl` / `--radius-full` | Border radius scale |
-| `--shadow-sm` / `--shadow-md` / `--shadow-lg` / `--shadow-xl` | Box shadow scale |
-| `--transition-fast` / `--transition-base` / `--transition-slow` | `100ms`, `200ms`, `300ms` ease transitions — zeroed when `prefers-reduced-motion: reduce` |
-| `--z-dropdown` / `--z-sticky` / `--z-modal-backdrop` / `--z-modal` / `--z-popover` / `--z-tooltip` / `--z-toast` | Managed z-index stack |
-
----
-
 ## Component Overview
 
-### Basic / Form Controls
+### Basic (10)
 
 | Component | Description |
 |---|---|
-| `Button` | Solid, outline, ghost, and link variants; sm / md / lg sizes; loading state |
-| `Label` | Accessible form label |
-| `Input` | Text input with error and disabled states |
+| `Button` | Primary, secondary, ghost, outline, danger variants; xs–lg sizes; loading state; renders as `<a>` when `href` is provided |
+| `Label` | Accessible form label with optional required indicator |
+| `Input` | Text input with error, disabled, and helper text states |
 | `Textarea` | Multi-line input; auto-resize optional |
 | `Checkbox` | Controlled and uncontrolled; indeterminate state |
-| `RadioGroup` + `Radio` | Context-linked radio group |
-| `Select` | Native select with custom styling |
-| `Switch` | Toggle switch, `aria-checked` |
-| `Slider` | Range slider with min / max / step |
+| `RadioGroup` + `Radio` | Context-linked radio group with arrow-key navigation |
+| `Select` | Native select with accessible custom styling |
+| `Switch` | Toggle switch with `aria-checked` |
+| `Slider` | Range slider with min / max / step and keyboard support |
+| `SegmentedControl` | Compact button-group toggle for mutually exclusive options |
 
-### Layout
+### Layout (5)
 
 | Component | Description |
 |---|---|
-| `Container` | Centered content wrapper with max-width presets (sm → 2xl) |
+| `Container` | Centered wrapper with responsive max-width presets (sm → 2xl) |
 | `Stack` | Flexbox stack — direction, gap, align, justify, wrap |
-| `Grid` | CSS grid with col count and gap presets |
-| `Divider` | Horizontal or vertical rule; supports an inline label |
+| `Grid` | CSS grid with column count and gap presets |
+| `Divider` | Horizontal or vertical rule with optional inline label |
+| `Sidebar` | Persistent collapsible `<aside>` panel with header, footer, and toggle |
 
-### Navigation
+### Navigation (7)
 
 | Component | Description |
 |---|---|
 | `Tabs` + `TabList` + `Tab` + `TabPanel` | Line or pill variant; roving tabindex keyboard navigation |
-| `Breadcrumb` | `<nav>` with `aria-label`, `aria-current="page"` on last item |
-| `Pagination` | Smart page range with ellipsis; siblings prop |
+| `Breadcrumb` | `<nav>` with `aria-label` and `aria-current="page"` on last item |
+| `Pagination` | Smart page range with ellipsis; configurable sibling count |
 | `Stepper` | Horizontal or vertical progress stepper; `aria-current="step"` |
+| `Navbar` + `NavbarBrand` + `NavbarNav` + `NavbarActions` | Compound sticky header component |
+| `SideNav` + `SideNavGroup` + `SideNavItem` | Grouped sidebar navigation with active state |
+| `TableOfContents` | Presentational TOC with active heading highlighting |
 
-### Feedback
+### Feedback (8)
 
 | Component | Description |
 |---|---|
 | `Alert` | Info / success / warning / error; `role="alert"` or `role="status"` |
-| `Badge` | Dot or label badge; multiple color variants |
-| `Spinner` | Animated loading indicator with sr-only label |
-| `Progress` | `role="progressbar"` with `aria-valuenow` / `aria-valuemin` / `aria-valuemax` |
-| `Skeleton` | Shimmer placeholder; text / circular / rectangular shapes |
+| `Badge` | Dot or label badge with multiple color variants |
+| `Spinner` | Animated loading indicator with screen-reader label |
+| `Progress` | `role="progressbar"` with `aria-valuenow` / min / max |
+| `Skeleton` | Shimmer placeholder in text, circular, or rectangular shapes |
 | `ToastProvider` + `useToast` | Imperative toast system with auto-dismiss and `aria-live` |
+| `Callout` | Left-border accent block — info, warning, success, danger, neutral |
+| `EmptyState` | Centered placeholder with icon, title, description, and action slot |
 
-### Overlay
+### Overlay (5)
 
 | Component | Description |
 |---|---|
-| `Modal` | Native `<dialog>` with `showModal()` — free focus trap and Escape key |
-| `Drawer` | Side / bottom sheet using `<dialog>`; right / left / bottom positions |
-| `Tooltip` | Pure CSS show/hide on hover + focus-within; `role="tooltip"` |
-| `Popover` | Click-triggered floating content; injects `aria-expanded` onto trigger |
+| `Modal` | Native `<dialog>` with `showModal()` — free focus trap and Escape to close |
+| `Drawer` | Side sheet using `<dialog>`; right / left / bottom positions |
+| `Tooltip` | Pure CSS tooltip on hover and focus; `role="tooltip"` |
+| `Popover` | Click-triggered floating panel; injects `aria-expanded` onto trigger |
+| `CommandPalette` | Keyboard-driven search overlay with grouped results and arrow-key navigation |
 
-### Data Display
+### Data Display (11)
 
 | Component | Description |
 |---|---|
 | `Avatar` | Image with fallback initials; status dot (online / away / busy / offline) |
-| `Card` + `CardHeader` + `CardBody` + `CardFooter` | Compound card layout |
-| `Table` + `TableHead` + `TableBody` + `TableRow` + `TableHeader` + `TableCell` | Accessible table with `scope="col"` and caption |
-| `Accordion` + `AccordionItem` + `AccordionTrigger` + `AccordionPanel` | Single or multi-expand; `hidden` attribute for a11y |
-| `Tag` | Inline label chip with optional dismiss button |
-| `Carousel` | Slide carousel with arrows, dots, autoPlay, and full ARIA carousel pattern |
-| `Banner` | Full-width site-level message bar; info / success / warning / error / promo |
-| `Timeline` | Vertical event timeline with status indicators and `<time>` elements |
+| `Card` + `CardHeader` + `CardBody` + `CardFooter` | Compound card with optional hover-lift animation |
+| `Table` + sub-components | Accessible table with `scope="col"` and caption support |
+| `Accordion` + sub-components | Single or multi-expand; `hidden` attribute for accessibility |
+| `Tag` | Inline chip with optional dismiss button |
+| `Carousel` | Slide carousel with arrows, dots, autoPlay, and ARIA carousel pattern |
+| `Banner` | Full-width message bar — info / success / warning / error / promo |
+| `Timeline` | Vertical event list with status indicators and `<time>` elements |
+| `CodeBlock` | Syntax-highlighted `<pre>` with language label and copy button |
+| `Rating` | Star rating — full, half, and empty states; interactive or read-only |
+| `ImageGallery` | Responsive image grid with native `<dialog>` lightbox and keyboard navigation |
 
-### Form Composites
+### Form Composites (7)
 
 | Component | Description |
 |---|---|
-| `FormField` | Wraps any input with a label, helper text, and error message; injects `id`, `aria-describedby`, `aria-invalid`, `aria-required` via `cloneElement` |
-| `SearchInput` | `type="search"` with clear button; hides native browser cancel button |
-| `NumberInput` | `type="number"` with increment / decrement buttons; min / max clamping |
+| `FormField` | Wraps any input with label, helper text, and error; injects `id`, `aria-describedby`, `aria-invalid` |
+| `SearchInput` | `type="search"` with clear button; hides native browser cancel icon |
+| `NumberInput` | Increment / decrement buttons with min / max clamping |
+| `DatePicker` | Calendar dropdown with min / max constraints and hidden form input |
+| `Combobox` | Searchable dropdown with keyboard navigation and optional clear button |
+| `FileUpload` | Drag-and-drop zone with size validation and file list management |
+| `OTPInput` | N-box OTP / PIN input with auto-advance, paste, and `onComplete` callback |
 
 ---
 
@@ -289,12 +206,19 @@ Spacing follows a **rem-based 4px scale** (`1rem = 16px`). Fractional steps are 
 ```tsx
 import { Button } from "anexui";
 
-<Button variant="solid" size="md" onClick={() => console.log("clicked")}>
+// Standard button
+<Button variant="primary" size="md" onClick={() => console.log("clicked")}>
   Get started
 </Button>
 
-<Button variant="outline" isLoading>
+// Loading state
+<Button variant="primary" loading>
   Saving…
+</Button>
+
+// Renders as <a> when href is provided
+<Button variant="primary" href="/docs" target="_blank">
+  View docs
 </Button>
 ```
 
@@ -330,23 +254,6 @@ function SaveButton() {
 }
 ```
 
-### Tabs
-
-```tsx
-import { Tabs, TabList, Tab, TabPanel } from "anexui";
-
-<Tabs defaultActiveId="overview" variant="line">
-  <TabList>
-    <Tab id="overview">Overview</Tab>
-    <Tab id="analytics">Analytics</Tab>
-    <Tab id="settings">Settings</Tab>
-  </TabList>
-  <TabPanel id="overview">Overview content</TabPanel>
-  <TabPanel id="analytics">Analytics content</TabPanel>
-  <TabPanel id="settings">Settings content</TabPanel>
-</Tabs>
-```
-
 ### Modal
 
 ```tsx
@@ -367,21 +274,51 @@ function Example() {
 }
 ```
 
-### Accordion
+### DatePicker
 
 ```tsx
-import { Accordion, AccordionItem, AccordionTrigger, AccordionPanel } from "anexui";
+import { DatePicker } from "anexui";
+import { useState } from "react";
 
-<Accordion multiple>
-  <AccordionItem id="q1">
-    <AccordionTrigger>What is Anex UI?</AccordionTrigger>
-    <AccordionPanel>A clean, accessible React component library.</AccordionPanel>
-  </AccordionItem>
-  <AccordionItem id="q2">
-    <AccordionTrigger>Is it free?</AccordionTrigger>
-    <AccordionPanel>Yes, MIT licensed.</AccordionPanel>
-  </AccordionItem>
-</Accordion>
+function Example() {
+  const [date, setDate] = useState<Date | null>(null);
+
+  return (
+    <DatePicker
+      value={date}
+      onChange={setDate}
+      placeholder="Pick a date"
+      min={new Date()}
+    />
+  );
+}
+```
+
+### Combobox
+
+```tsx
+import { Combobox } from "anexui";
+import { useState } from "react";
+
+const options = [
+  { value: "react", label: "React" },
+  { value: "vue", label: "Vue" },
+  { value: "svelte", label: "Svelte" },
+];
+
+function Example() {
+  const [value, setValue] = useState("");
+
+  return (
+    <Combobox
+      options={options}
+      value={value}
+      onChange={setValue}
+      placeholder="Select a framework"
+      clearable
+    />
+  );
+}
 ```
 
 ---
@@ -392,13 +329,16 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionPanel } from "anex
 # Install dependencies
 npm install
 
-# Start Storybook dev server (port 6006)
+# Start landing page dev server (port 5173)
+npm run dev
+
+# Start Storybook (port 6006)
 npm run storybook
 
-# TypeScript type check
+# Type check
 npx tsc --noEmit
 
-# Build the library (outputs ESM + CJS + type declarations)
+# Build library (ESM + CJS + type declarations → dist/)
 npm run build:lib
 
 # Lint
@@ -412,35 +352,50 @@ npm run lint
 ```
 src/
 ├── components/
-│   ├── basic/          # Button, Input, Checkbox, Select, Switch, Slider …
-│   ├── layout/         # Container, Stack, Grid, Divider
-│   ├── navigation/     # Tabs, Breadcrumb, Pagination, Stepper
-│   ├── feedback/       # Alert, Badge, Spinner, Progress, Skeleton, Toast
-│   ├── overlay/        # Modal, Drawer, Tooltip, Popover
-│   └── data-display/   # Avatar, Card, Table, Accordion, Tag, Carousel, Banner, Timeline
-├── form/               # FormField, SearchInput, NumberInput
+│   ├── basic/          # Button, Input, Textarea, Checkbox, Select, Switch, Slider,
+│   │                   # RadioGroup, Label, SegmentedControl
+│   ├── layout/         # Container, Stack, Grid, Divider, Sidebar
+│   ├── navigation/     # Tabs, Breadcrumb, Pagination, Stepper,
+│   │                   # Navbar, SideNav, TableOfContents
+│   ├── feedback/       # Alert, Badge, Spinner, Progress, Skeleton, Toast,
+│   │                   # Callout, EmptyState
+│   ├── overlay/        # Modal, Drawer, Tooltip, Popover, CommandPalette
+│   ├── data-display/   # Avatar, Card, Table, Accordion, Tag, Carousel, Banner,
+│   │                   # Timeline, CodeBlock, Rating, ImageGallery
+│   └── form/           # FormField, SearchInput, NumberInput, DatePicker,
+│                       # Combobox, FileUpload, OTPInput
 ├── tokens/
-│   └── index.css       # Non-color design tokens (spacing, radius, shadows, z-index, typography)
+│   └── index.css       # Non-color tokens (spacing, radius, shadows, z-index, typography)
 ├── themes/
 │   ├── light.css       # Light theme color variables (default — applied to :root)
 │   ├── dark.css        # Dark theme color variables
-│   └── index.css       # Imports both themes (add custom themes here)
+│   └── index.css       # Imports both themes
 └── lib/
     └── cn.ts           # clsx + tailwind-merge utility
 ```
 
 ---
 
+## Theming
+
+All design decisions are driven by CSS custom properties. To create a custom theme:
+
+1. Create `src/themes/my-theme.css` with `[data-theme="my-theme"] { ... }` overrides
+2. Import it in `src/themes/index.css`
+3. Set `data-theme="my-theme"` on `<html>`
+
+Key token groups: colors, spacing, typography, radius, shadows, transitions, z-index. See the full token reference in the [docs](https://your-docs-site.com/docs/theming).
+
+---
+
 ## Accessibility
 
-Every component is built with accessibility as a first-class concern:
-
 - Semantic HTML elements (`<button>`, `<nav>`, `<dialog>`, `<ol>`, `<time>`, `<caption>`)
-- ARIA roles, states, and properties (`aria-expanded`, `aria-current`, `aria-live`, `aria-describedby`, …)
-- Keyboard navigation (Tab, Arrow keys, Enter, Escape, Space)
+- ARIA roles, states, and properties throughout
+- Full keyboard navigation (Tab, Arrow keys, Enter, Escape, Space)
 - Focus management — Modal and Drawer use native `<dialog>` for free focus trapping
 - `prefers-reduced-motion` respected — all transition tokens zero out automatically
-- Storybook `addon-a11y` configured with `test: "error"` — stories fail on a11y violations
+- Storybook `addon-a11y` configured — stories fail on accessibility violations
 
 ---
 
