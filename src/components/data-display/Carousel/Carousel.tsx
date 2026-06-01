@@ -22,6 +22,7 @@ export default function Carousel({
   loop = true,
   showArrows = true,
   showDots = true,
+  titles,
   label = "Carousel",
   className,
 }: CarouselProps) {
@@ -55,6 +56,7 @@ export default function Carousel({
       className={cn(styles.carousel, className)}
       aria-label={label}
       aria-roledescription="carousel"
+      tabIndex={0}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -113,7 +115,7 @@ export default function Carousel({
               key={i}
               type="button"
               onClick={() => setCurrent(i)}
-              aria-label={`Go to slide ${i + 1}`}
+              aria-label={titles?.[i] ?? `Go to slide ${i + 1}`}
               aria-current={i === current ? "true" : undefined}
               className={cn(styles.dot, i === current && styles.dotActive)}
             />

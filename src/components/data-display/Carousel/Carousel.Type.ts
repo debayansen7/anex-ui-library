@@ -11,6 +11,8 @@ export interface CarouselProps {
   loop?: boolean;
   showArrows?: boolean;
   showDots?: boolean;
+  /** Names/titles for each slide — used as dot button labels */
+  titles?: string[];
   /** Accessible label for the carousel region */
   label?: string;
   className?: string;
