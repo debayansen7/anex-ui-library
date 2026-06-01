@@ -15,7 +15,8 @@
       "Bash(Select-Object FullName)",
       "Bash(npm whoami *)",
       "Bash(npm publish *)",
-      "Bash(npm config *)"
+      "Bash(npm config *)",
+      "Bash(node -p \"require\\('./package.json'\\).version\")"
     ]
   }
 }

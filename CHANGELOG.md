@@ -7,6 +7,62 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.0] — 2026-06-01
+
+### Added
+
+#### Basic
+- **SegmentedControl** — exclusive option selector, `role="radiogroup"` with roving tabindex keyboard navigation
+
+#### Layout
+- **Sidebar** — collapsible side panel, header / items / footer slots, `aria-expanded`
+
+#### Navigation
+- **Navbar** — top navigation bar with logo, links, and action slots
+- **SideNav** — vertical navigation list with active-item highlight, icon + label slots
+- **TableOfContents** — scrollspy-driven `<nav>`, highlights active heading
+
+#### Feedback
+- **Callout** — inline contextual message block, info / success / warning / error variants
+- **EmptyState** — zero-data placeholder with icon, title, description, and action slot
+
+#### Overlay
+- **CommandPalette** — keyboard-triggered fuzzy-search launcher, `role="dialog"`, `aria-modal`
+
+#### Data Display
+- **CodeBlock** — syntax-highlighted `<pre>` with copy-to-clipboard button
+- **Rating** — star rating, read-only and interactive modes, keyboard accessible
+- **ImageGallery** — lightbox-ready image grid with caption support
+
+#### Form
+- **Combobox** — searchable dropdown, `role="combobox"` + `role="listbox"`, keyboard navigation
+- **DatePicker** — calendar popover, keyboard navigation, `aria-label` on day cells
+- **FileUpload** — drag-and-drop zone + click-to-browse, file list with remove, `aria-live`
+- **OTPInput** — segmented one-time-password input, auto-advance on fill, paste handling
+
+### Changed
+- **Button** — refactored props and internal structure
+
+### Fixed
+- **Carousel** — added `tabIndex={0}` to container so keyboard navigation works without requiring a focused child
+- **Carousel** — added `titles` prop to give dot indicator buttons named labels (falls back to `"Go to slide N"`)
+
+---
+
+## [0.1.1] — 2026-05-29
+
+### Added
+- Landing page — live component showcase for all 7 categories with toggleable code snippets and sticky category nav
+
+### Changed
+- **Card** — added `variant` prop: `elevated` (default), `outlined`, `ghost`, `flat`
+
+### Fixed
+- Removed leftover `"use client"` directives from all component files (not applicable outside Next.js)
+- Removed dead build artefacts (`src/components/basic/index.js`, `src/tailwind.config.js`, `src/pages/index.js`)
+
+---
+
 ## [0.1.0] — 2026-05-28
 
 ### Added
@@ -72,4 +128,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Storybook v10 with a11y plugin set to `error` mode
 - `npx anexui add <component>` CLI — fetches components from registry, resolves deps, writes to `src/components/`
 
+[1.0.0]: https://github.com/debayan/anexui/compare/v0.1.1...v1.0.0
+[0.1.1]: https://github.com/debayan/anexui/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/debayan/anexui/releases/tag/v0.1.0
