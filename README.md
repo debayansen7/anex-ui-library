@@ -5,7 +5,7 @@ A clean, accessible, and themeable React component library built with **React 19
 [![npm version](https://img.shields.io/npm/v/anexui)](https://www.npmjs.com/package/anexui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-violet.svg)](LICENSE)
 
-> **Package name:** `anexui` — **Current version:** `1.1.0`
+> **Package name:** `anexui` — **Current version:** `1.1.1`
 >
 > GitHub: [debayansen7/anex-ui-library](https://github.com/debayansen7/anex-ui-library) · npm: [npmjs.com/package/anexui](https://www.npmjs.com/package/anexui)
 

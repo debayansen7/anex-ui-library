@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.1] — 2026-06-04
+
+### Fixed
+- **AudioPlayer / VideoPlayer** — added missing entries to `registry.json` so `npx anexui add` can resolve the new media components
+- **AudioPlayer / VideoPlayer** — added source files to `public/registry/components/media/` so the Component Builder download works correctly
+- Website `tsconfig.json` — excluded `public/` from TypeScript compilation to prevent false errors in static registry files
+
+---
+
 ## [1.1.0] — 2026-06-04
 
 ### Added
@@ -138,6 +147,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Storybook v10 with a11y plugin set to `error` mode
 - `npx anexui add <component>` CLI — fetches components from registry, resolves deps, writes to `src/components/`
 
+[1.1.1]: https://github.com/debayan/anexui/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/debayan/anexui/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/debayan/anexui/compare/v0.1.1...v1.0.0
 [0.1.1]: https://github.com/debayan/anexui/compare/v0.1.0...v0.1.1
