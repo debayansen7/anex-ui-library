@@ -5,7 +5,7 @@ A clean, accessible, and themeable React component library built with **React 19
 [![npm version](https://img.shields.io/npm/v/anexui)](https://www.npmjs.com/package/anexui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-violet.svg)](LICENSE)
 
-> **Package name:** `anexui` — **Current version:** `1.0.0`
+> **Package name:** `anexui` — **Current version:** `1.1.0`
 >
 > GitHub: [debayansen7/anex-ui-library](https://github.com/debayansen7/anex-ui-library) · npm: [npmjs.com/package/anexui](https://www.npmjs.com/package/anexui)
 
@@ -13,7 +13,7 @@ A clean, accessible, and themeable React component library built with **React 19
 
 ## Features
 
-- **53 components** across 7 categories — layout, navigation, feedback, overlays, data display, form controls, and more
+- **55 components** across 8 categories — layout, navigation, feedback, overlays, data display, media, form controls, and more
 - **WCAG AA accessibility** — semantic HTML, ARIA attributes, keyboard navigation, and focus management throughout
 - **Light & dark theming** out of the box via CSS custom properties — switch at runtime with a single `data-theme` attribute
 - **Zero UI library dependencies** — built from scratch using native browser APIs (`<dialog>`, `hidden`, `role`, `aria-*`); only three small utilities bundled (`clsx`, `tailwind-merge`, `class-variance-authority`)
@@ -185,6 +185,13 @@ function App() {
 | `Rating` | Star rating — full, half, and empty states; interactive or read-only |
 | `ImageGallery` | Responsive image grid with native `<dialog>` lightbox and keyboard navigation |
 
+### Media (2)
+
+| Component | Description |
+|---|---|
+| `AudioPlayer` | Audio playback with `default` (artwork + title/artist + seek + volume), `minimal` (compact bar), and `controls` (inline strip) variants; seek and volume sliders with full `aria-valuemin/max/now`; loop, autoPlay, `onPlay` / `onPause` / `onEnded` callbacks |
+| `VideoPlayer` | Video playback with `default` (custom overlay controls, auto-hide after 3 s) and `minimal` (native browser controls) variants; aspect ratios `16/9`, `4/3`, `1/1`; fullscreen API; keyboard shortcuts Space/K = play/pause, F = fullscreen, M = mute; poster image, loop, autoPlay, muted |
+
 ### Form Composites (7)
 
 | Component | Description |
@@ -321,6 +328,45 @@ function Example() {
 }
 ```
 
+### AudioPlayer
+
+```tsx
+import { AudioPlayer } from "anexui";
+
+// Full card with artwork, title, artist, seek, and volume
+<AudioPlayer
+  src="/audio/track.mp3"
+  title="Track Name"
+  artist="Artist Name"
+  variant="default"
+  onEnded={() => console.log("Track ended")}
+/>
+
+// Compact bar
+<AudioPlayer src="/audio/track.mp3" title="Track Name" variant="minimal" />
+
+// Inline controls strip
+<AudioPlayer src="/audio/track.mp3" variant="controls" />
+```
+
+### VideoPlayer
+
+```tsx
+import { VideoPlayer } from "anexui";
+
+// Custom overlay controls with fullscreen support
+<VideoPlayer
+  src="/video/clip.mp4"
+  poster="/video/thumb.jpg"
+  title="Demo video"
+  aspectRatio="16/9"
+  onEnded={() => console.log("Video ended")}
+/>
+
+// Native browser controls
+<VideoPlayer src="/video/clip.mp4" variant="minimal" aspectRatio="4/3" />
+```
+
 ---
 
 ## Development
@@ -362,6 +408,7 @@ src/
 │   ├── overlay/        # Modal, Drawer, Tooltip, Popover, CommandPalette
 │   ├── data-display/   # Avatar, Card, Table, Accordion, Tag, Carousel, Banner,
 │   │                   # Timeline, CodeBlock, Rating, ImageGallery
+│   ├── media/          # AudioPlayer, VideoPlayer
 │   └── form/           # FormField, SearchInput, NumberInput, DatePicker,
 │                       # Combobox, FileUpload, OTPInput
 ├── tokens/
