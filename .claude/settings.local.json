@@ -16,7 +16,8 @@
       "Bash(npm whoami *)",
       "Bash(npm publish *)",
       "Bash(npm config *)",
-      "Bash(node -p \"require\\('./package.json'\\).version\")"
+      "Bash(node -p \"require\\('./package.json'\\).version\")",
+      "Bash(Get-ChildItem \"c:\\\\Users\\\\debay\\\\Debayan-Data\\\\Work Area\\\\1. FRONTEND\\\\1. REACTJS + REACT Native\\\\2. Projects\\\\4. UI Library\\\\ui-library\\\\src\\\\components\\\\media\" -Recurse)"
     ]
   }
 }

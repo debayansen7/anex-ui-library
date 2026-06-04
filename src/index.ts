@@ -169,3 +169,14 @@ export type {
   FileUploadProps,
   OTPInputProps,
 } from "./components/form";
+
+// ── Media ──────────────────────────────────────────────────────────────────
+export { AudioPlayer, VideoPlayer } from "./components/media";
+
+export type {
+  AudioPlayerProps,
+  AudioPlayerVariant,
+  VideoPlayerProps,
+  VideoPlayerVariant,
+  VideoAspectRatio,
+} from "./components/media";

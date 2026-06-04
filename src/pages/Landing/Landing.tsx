@@ -7,6 +7,7 @@ import FeedbackSection from "./sections/FeedbackSection";
 import OverlaySection from "./sections/OverlaySection";
 import DataDisplaySection from "./sections/DataDisplaySection";
 import FormSection from "./sections/FormSection";
+import MediaSection from "./sections/MediaSection";
 
 const NAV_LINKS = [
   { id: "basic", label: "Basic", count: 10 },
@@ -16,10 +17,11 @@ const NAV_LINKS = [
   { id: "overlay", label: "Overlay", count: 5 },
   { id: "data-display", label: "Data Display", count: 11 },
   { id: "form", label: "Form", count: 7 },
+  { id: "media", label: "Media", count: 2 },
 ];
 
 const FEATURES = [
-  { label: "53 components" },
+  { label: "55 components" },
   { label: "React 19" },
   { label: "TypeScript" },
   { label: "Tailwind CSS v4" },
@@ -92,7 +94,7 @@ const Hero = () => {
         }}
       >
         A clean, accessible React component library built with{" "}
-        <strong style={{ color: "var(--color-text)" }}>Tailwind CSS v4</strong>. 53 components,
+        <strong style={{ color: "var(--color-text)" }}>Tailwind CSS v4</strong>. 55 components,
         light &amp; dark themes, zero UI library dependencies.
       </p>
 
@@ -284,6 +286,7 @@ const Landing = () => (
         <OverlaySection />
         <DataDisplaySection />
         <FormSection />
+        <MediaSection />
       </main>
 
       <Footer />
