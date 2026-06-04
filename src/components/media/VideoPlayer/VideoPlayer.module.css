@@ -1,0 +1,203 @@
+/* ── Wrapper ──────────────────────────────────────────────────────────── */
+.wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: #000;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  font-family: var(--font-sans);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  /* height is driven by the in-flow video element */
+}
+
+/* ── Aspect ratios — applied directly to <video> ─────────────────────── */
+.aspect16x9 { aspect-ratio: 16 / 9; }
+.aspect4x3  { aspect-ratio: 4  / 3; }
+.aspect1x1  { aspect-ratio: 1  / 1; }
+
+/* ── Video element ────────────────────────────────────────────────────── */
+.video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: #000;
+  cursor: pointer;
+}
+
+/* ── Center play indicator (shown when paused) ────────────────────────── */
+.centerPlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.bigPlayBtn {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: rgb(0 0 0 / 0.55);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+  backdrop-filter: blur(4px);
+}
+
+/* ── Controls overlay ─────────────────────────────────────────────────── */
+.controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 var(--space-3) var(--space-3);
+  background: linear-gradient(to top, rgb(0 0 0 / 0.75) 0%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--transition-base), transform var(--transition-base);
+  pointer-events: none;
+}
+
+.controlsVisible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ── Progress row ─────────────────────────────────────────────────────── */
+.progressRow {
+  width: 100%;
+  padding: 0 var(--space-1);
+}
+
+/* ── Seek / volume range ─────────────────────────────────────────────── */
+.seekBar {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    to right,
+    #fff var(--pct, 0%),
+    rgb(255 255 255 / 0.3) var(--pct, 0%)
+  );
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.seekBar::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background: #fff;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.seekBar::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
+}
+
+.seekBar::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background: #fff;
+  cursor: pointer;
+  border: none;
+}
+
+.seekBar:focus-visible {
+  outline: 2px solid rgba(255 255 255 / 0.6);
+  outline-offset: 2px;
+}
+
+.volumeBar {
+  width: 72px;
+}
+
+/* ── Bottom row ───────────────────────────────────────────────────────── */
+.bottomRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: #fff;
+}
+
+/* ── Control buttons ─────────────────────────────────────────────────── */
+.ctrlBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  padding: var(--space-1);
+  transition: background var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.ctrlBtn:hover {
+  background: rgb(255 255 255 / 0.15);
+}
+
+.ctrlBtn:focus-visible {
+  outline: 2px solid rgb(255 255 255 / 0.6);
+  outline-offset: 1px;
+}
+
+.ctrlBtnRight {
+  margin-left: auto;
+}
+
+/* ── Volume group ─────────────────────────────────────────────────────── */
+.volumeGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* ── Time display ─────────────────────────────────────────────────────── */
+.timeDisplay {
+  font-size: var(--text-xs);
+  color: rgb(255 255 255 / 0.9);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+/* ── Fullscreen adjustments ───────────────────────────────────────────── */
+:fullscreen .wrapper,
+:-webkit-full-screen .wrapper {
+  border-radius: 0;
+  border: none;
+}
+
+/* ── Reduced motion ────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .controls,
+  .bigPlayBtn,
+  .seekBar::-webkit-slider-thumb,
+  .ctrlBtn {
+    transition: none;
+  }
+}
