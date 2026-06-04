@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.0] — 2026-06-04
+
+### Added
+
+#### Media *(new category)*
+- **AudioPlayer** — audio playback with `default` (artwork + title/artist + seek + volume), `minimal` (compact bar with title), and `controls` (inline strip) variants; `role="region"` / `role="group"` with `aria-label`; seek and volume sliders with `aria-valuemin/max/now`; play/pause and mute buttons with `aria-label`; loop and autoPlay props; `onPlay` / `onPause` / `onEnded` callbacks
+- **VideoPlayer** — video playback with `default` (custom overlay controls, auto-hide after 3 s) and `minimal` (native `controls` attribute) variants; aspect ratios `16/9`, `4/3`, `1/1`; fullscreen via Fullscreen API; keyboard shortcuts Space/K = play/pause, F = fullscreen, M = mute; seek bar, volume slider, and time display all keyboard-accessible; `role="region"` with `aria-label`; poster image, loop, autoPlay, and muted props; `onPlay` / `onPause` / `onEnded` callbacks
+
+---
+
 ## [1.0.0] — 2026-06-01
 
 ### Added
@@ -128,6 +138,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Storybook v10 with a11y plugin set to `error` mode
 - `npx anexui add <component>` CLI — fetches components from registry, resolves deps, writes to `src/components/`
 
+[1.1.0]: https://github.com/debayan/anexui/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/debayan/anexui/compare/v0.1.1...v1.0.0
 [0.1.1]: https://github.com/debayan/anexui/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/debayan/anexui/releases/tag/v0.1.0
