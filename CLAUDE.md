@@ -2,7 +2,23 @@
 
 ## Project overview
 
-**Anex UI** (`anexui`) is a React 19 component library built with TypeScript and Tailwind CSS v4. It ships 51 accessible components across 7 categories. The repo hosts both the library source and a landing page that showcases every component live.
+**Anex UI** (`anexui`) is a React 19 component library built with TypeScript and Tailwind CSS v4. It ships **55 fully implemented components** across **8 active categories** (basic, layout, navigation, feedback, overlay, data-display, form, media). The repo hosts both the library source and a landing page that showcases every component live. A CLI (`npx anexui`) lets users install individual components from the registry.
+
+---
+
+## Tech stack
+
+| Technology | Version |
+|---|---|
+| React | ^19.2.0 |
+| TypeScript | ~5.x |
+| Tailwind CSS | ^4.2.1 |
+| Vite | ^7.3.1 |
+| Storybook | ^10.2.15 |
+| Vitest | ^4.0.18 |
+| clsx | ^2.1.1 |
+| tailwind-merge | ^2.3.0 |
+| class-variance-authority | ^0.7.0 |
 
 ---
 
@@ -11,10 +27,16 @@
 | Command | What it does |
 |---|---|
 | `npm run dev` | Starts the landing page at `localhost:5173` |
-| `npm run storybook` | Starts Storybook at `localhost:6006` |
+| `npm run build` | Type-checks (`tsc -b`) then runs Vite build |
+| `npm run preview` | Previews the built landing page |
 | `npm run build:lib` | Builds ESM + CJS + type declarations into `dist/` |
 | `npx tsc --noEmit` | Type-checks the entire project |
 | `npm run lint` | Runs ESLint |
+| `npm run storybook` | Starts Storybook at `localhost:6006` |
+| `npm run build-storybook` | Builds static Storybook output |
+| `npx anexui add <id>` | Downloads and installs a component from the registry |
+| `npx anexui list [filter]` | Lists all available registry components by category |
+| `npx anexui help` | Shows CLI usage information |
 
 ---
 
@@ -22,20 +44,37 @@
 
 ```
 src/
-├── components/           ← Library source
-│   ├── basic/            Button, Label, Input, Textarea, Checkbox,
-│   │                     RadioGroup, Select, Switch, Slider
-│   ├── layout/           Container, Stack, Grid, Divider
-│   ├── navigation/       Tabs, Breadcrumb, Pagination, Stepper
-│   ├── feedback/         Alert, Badge, Spinner, Progress, Skeleton, Toast
-│   ├── overlay/          Modal, Drawer, Tooltip, Popover
-│   ├── data-display/     Avatar, Card, Table, Accordion, Tag,
-│   │                     Carousel, Banner, Timeline
-│   └── form/             FormField, SearchInput, NumberInput
+├── App.tsx / App.css         ← Landing page application root
+├── main.tsx                  ← Vite entry point
+├── index.css                 ← Global CSS
+├── index.ts                  ← Main library entry point (all public exports)
+│
+├── assets/
+│   └── react.svg
+│
+├── lib/
+│   └── cn.ts                 ← clsx + tailwind-merge helper (use for className merging)
+│
+├── components/               ← Library source (55 fully implemented components)
+│   ├── basic/                Button, Label, Input, Textarea, Checkbox,
+│   │                         RadioGroup, Select, Switch, Slider, SegmentedControl
+│   ├── layout/               Container, Stack, Grid, Divider, Sidebar
+│   ├── navigation/           Tabs, Breadcrumb, Pagination, Stepper,
+│   │                         Navbar, SideNav, TableOfContents
+│   ├── feedback/             Alert, Badge, Spinner, Progress, Skeleton,
+│   │                         Toast, Callout, EmptyState
+│   ├── overlay/              Modal, Drawer, Tooltip, Popover, CommandPalette
+│   ├── data-display/         Avatar, Card, Table, Accordion, Tag, Carousel,
+│   │                         Banner, Timeline, CodeBlock, Rating, ImageGallery
+│   ├── form/                 FormField, SearchInput, NumberInput, DatePicker,
+│   │                         Combobox, FileUpload, OTPInput
+│   ├── media/                AudioPlayer, VideoPlayer
+│   ├── common/               (in-progress — Header partial, Footer/MainWrapper/SideBar empty)
+│   └── advanced/             (reserved — empty)
 │
 ├── pages/
-│   └── Landing/          ← Landing page (component showcase)
-│       ├── Landing.tsx   Hero + sticky nav + all sections assembled
+│   └── Landing/              ← Landing page (component showcase)
+│       ├── Landing.tsx       Hero + sticky nav + all sections assembled
 │       ├── shared/
 │       │   ├── DemoCard.tsx      Card wrapper: title, description, live demo, code toggle
 │       │   ├── CodeBlock.tsx     Styled <pre> for code snippets
@@ -47,14 +86,23 @@ src/
 │           ├── FeedbackSection.tsx
 │           ├── OverlaySection.tsx
 │           ├── DataDisplaySection.tsx
-│           └── FormSection.tsx
+│           ├── FormSection.tsx
+│           └── MediaSection.tsx
+│
+├── stories/                  ← Storybook demo files (Button, Header, Page demos + assets)
 │
 ├── themes/
-│   ├── light.css         Light theme CSS custom properties (default, applied to :root)
-│   └── dark.css          Dark theme CSS custom properties (data-theme="dark")
+│   ├── index.css             Imports light.css and dark.css
+│   ├── light.css             Light theme CSS custom properties (default, applied to :root)
+│   └── dark.css              Dark theme CSS custom properties (data-theme="dark")
 │
 └── tokens/
-    └── index.css         Spacing, radius, shadow, z-index, and typography tokens
+    └── index.css             Spacing, radius, shadow, z-index, and typography tokens
+
+cli/
+└── index.js                  ← CLI entry point (bin: "anexui")
+
+dist/                         ← Built output (index.mjs, index.cjs, index.css, types/)
 ```
 
 ---
@@ -68,14 +116,20 @@ ComponentName/
 ├── ComponentName.tsx        Implementation
 ├── ComponentName.Type.ts    TypeScript interfaces and type aliases
 ├── ComponentName.module.css Scoped styles using CSS custom properties from tokens/themes
-└── ComponentName.stories.ts Storybook stories
+└── ComponentName.stories.tsx Storybook stories
 ```
 
 The category `index.ts` re-exports everything — import from the category, not the file:
 
 ```ts
-import { Button } from "../../components/basic";       // ✓
-import Button from "../../components/basic/Button/Button"; // ✗
+import { Button } from "../../components/basic";              // ✓
+import Button from "../../components/basic/Button/Button";    // ✗
+```
+
+For className merging inside component implementations, use the `cn` helper:
+
+```ts
+import { cn } from "../../lib/cn";
 ```
 
 ---
@@ -97,7 +151,13 @@ import Button from "../../components/basic/Button/Button"; // ✗
    export type { ComponentNameProps } from "./ComponentName/ComponentName.Type";
    ```
 
-3. **Add a demo card** to the matching section file in `src/pages/Landing/sections/`:
+3. **Export it** from the main library entry `src/index.ts`:
+   ```ts
+   export { ComponentName } from "./components/<category>";
+   export type { ComponentNameProps } from "./components/<category>";
+   ```
+
+4. **Add a demo card** to the matching section file in `src/pages/Landing/sections/`:
    ```tsx
    <DemoCard
      title="ComponentName"
@@ -110,11 +170,9 @@ import Button from "../../components/basic/Button/Button"; // ✗
    </DemoCard>
    ```
 
-4. **Update the `count` prop** on the `SectionHeader` in that section file.
+5. **Update the `count` prop** on the `SectionHeader` in that section file.
 
-5. **Update the `NAV_LINKS` array** in `Landing.tsx` if the count changed.
-
-6. **Add the export to the published package** in the library's main `index.ts` (if one exists at `src/index.ts`).
+6. **Update the `NAV_LINKS` array** in `Landing.tsx` if the count changed.
 
 ---
 
@@ -157,6 +215,12 @@ document.documentElement.setAttribute("data-theme", "dark");
 ```
 
 or add `data-theme="dark"` to `<html>` in `index.html`.
+
+---
+
+## CLI
+
+The `cli/index.js` is registered as the `anexui` binary in `package.json`. It fetches component source from `https://anexui.com/registry/` and writes files directly into the user's project — useful for projects that want to copy-own components rather than import from the published package.
 
 ---
 
